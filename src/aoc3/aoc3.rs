@@ -6,6 +6,7 @@ fn main() {
     let contents = fs::read_to_string(filename)
         .expect("could not read file");
        let lines: Vec<&str> = contents.split("\n").collect::<Vec<&str>>();
+       //Input amount of steps right and down, separated by spaces.
        println!("How many down?");
        let mut down = String::new();
        io::stdin().read_line(&mut down).unwrap();
