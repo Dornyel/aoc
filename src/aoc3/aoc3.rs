@@ -6,17 +6,17 @@ fn main() {
     let contents = fs::read_to_string(filename)
         .expect("could not read file");
        let lines: Vec<&str> = contents.split("\n").collect::<Vec<&str>>();
-       //Input amount of steps right and down, separated by spaces.
+
+       //Input amount of steps down and right separated by spaces. Example 1 1 1 2.
        println!("How many down?");
        let mut down = String::new();
        io::stdin().read_line(&mut down).unwrap();
        let down: Vec<usize> = down.split_whitespace().filter_map(|w| w.parse().ok()).collect();
+
        println!("How many right?");
        let mut right = String::new();
        io::stdin().read_line(&mut right).unwrap();
        let right: Vec<usize> = right.split_whitespace().filter_map(|w| w.parse().ok()).collect();
-       //let step = (chars * down) + right;
-       //println!("{:?}", step);
 
        let mut trees = 0;
        let mut line = 0;
