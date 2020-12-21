@@ -48,18 +48,18 @@ impl PassportValid {
             if l.len() == 8 {
                 if (String::from(&l[5..])).contains("in") {
                     //println!("{:?}", l[4..6]);
-                    println!("{:?}", String::from(&l[4..6]).trim().parse::<i32>().unwrap());
+                    //println!("{:?}", String::from(&l[4..6]).trim().parse::<i32>().unwrap());
                     if String::from(&l[4..5]).trim().parse::<i32>().unwrap() >= 59 && String::from(&l[4..5]).trim().parse::<i32>().unwrap() <= 76 {
-                        println!("aadsad");
+                        //println!("aadsad");
                         self.hgt = true;
                     }
                 }
             } else if l.len() == 9 {
                 if (String::from(&l[6..])).contains("cm") {
-                    println!("{:?}", String::from(&l[4..7]).trim().parse::<i32>().unwrap());
+                    //println!("{:?}", String::from(&l[4..7]).trim().parse::<i32>().unwrap());
                     
                     if String::from(&l[4..6]).trim().parse::<i32>().unwrap() >= 150i32 && String::from(&l[4..6]).trim().parse::<i32>().unwrap() <= 193i32 {
-                        println!("aaaa");
+                        //println!("aaaa");
                         self.hgt = true;
                     }
                 } else {return self}
@@ -169,18 +169,23 @@ fn main() {
         for j in &FIELDS {
             for k in 0..lines2[i].len() {
                 if lines2[i][k] == "" {
-                    if counter == FIELDS.len() && is_valid(&passport) == true {
-                        println!("{:?}", passport);
-                        correct += 1;
-                        passport = PassportValid {
-                            byr: false,
-                            iyr: false,
-                            eyr: false,
-                            hgt: false,
-                            hcl: false,
-                            ecl: false,
-                            pid: false
-                        };
+                    if counter == FIELDS.len() {
+                        //println!("aaa");
+                        //println!("{:?}", passport);
+                        if is_valid(&passport) == true {
+                            println!("{:?}", passport);
+                            correct += 1;
+                            passport = PassportValid {
+                                byr: false,
+                                iyr: false,
+                                eyr: false,
+                                hgt: false,
+                                hcl: false,
+                                ecl: false,
+                                pid: false
+                            };
+                        }
+                        
                     }
                     counter = 0;
                 } else if *j == &lines2[i][k][0..3] {
