@@ -46,18 +46,20 @@ impl PassportValid {
         } else if *c == "hgt" {
          //println!("{:?} height: {:?}", l, l.len());
             if l.len() == 8 {
-                if l.chars().nth(4) == Some('i') && l.chars().nth(5) == Some('n') {
+                if (String::from(&l[5..])).contains("in") {
                     //println!("{:?}", l[4..6]);
-                    if l[4..5].trim().parse::<i32>().unwrap() >= 59 && l[4..5].trim().parse::<i32>().unwrap() <= 76 {
+                    println!("{:?}", String::from(&l[4..6]).trim().parse::<i32>().unwrap());
+                    if String::from(&l[4..5]).trim().parse::<i32>().unwrap() >= 59 && String::from(&l[4..5]).trim().parse::<i32>().unwrap() <= 76 {
+                        println!("aadsad");
                         self.hgt = true;
                     }
                 }
             } else if l.len() == 9 {
-                
-                if l.chars().nth(5) == Some('c') && l.chars().nth(6) == Some('m') {
+                if (String::from(&l[6..])).contains("cm") {
+                    println!("{:?}", String::from(&l[4..7]).trim().parse::<i32>().unwrap());
                     
-                    println!("{:?}{:?}{:?}{:?}{:?}", l.chars().nth(4), l.chars().nth(5), l.chars().nth(6), l.chars().nth(7), l.chars().nth(8));
-                    if l[4..6].trim().parse::<i32>().unwrap() >= 150 && l[4..6].trim().parse::<i32>().unwrap() <= 193 {
+                    if String::from(&l[4..6]).trim().parse::<i32>().unwrap() >= 150i32 && String::from(&l[4..6]).trim().parse::<i32>().unwrap() <= 193i32 {
+                        println!("aaaa");
                         self.hgt = true;
                     }
                 } else {return self}
