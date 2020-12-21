@@ -49,7 +49,7 @@ impl PassportValid {
                 if (String::from(&l[5..])).contains("in") {
                     //println!("{:?}", l[4..6]);
                     //println!("{:?}", String::from(&l[4..6]).trim().parse::<i32>().unwrap());
-                    if String::from(&l[4..5]).trim().parse::<i32>().unwrap() >= 59 && String::from(&l[4..5]).trim().parse::<i32>().unwrap() <= 76 {
+                    if String::from(&l[4..6]).trim().parse::<i32>().unwrap() >= 59 && String::from(&l[4..6]).trim().parse::<i32>().unwrap() <= 76 {
                         //println!("aadsad");
                         self.hgt = true;
                     }
@@ -58,7 +58,7 @@ impl PassportValid {
                 if (String::from(&l[6..])).contains("cm") {
                     //println!("{:?}", String::from(&l[4..7]).trim().parse::<i32>().unwrap());
                     
-                    if String::from(&l[4..6]).trim().parse::<i32>().unwrap() >= 150i32 && String::from(&l[4..6]).trim().parse::<i32>().unwrap() <= 193i32 {
+                    if String::from(&l[4..7]).trim().parse::<i32>().unwrap() >= 150i32 && String::from(&l[4..7]).trim().parse::<i32>().unwrap() <= 193i32 {
                         //println!("aaaa");
                         self.hgt = true;
                     }
