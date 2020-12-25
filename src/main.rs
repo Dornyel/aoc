@@ -3,7 +3,7 @@ use std::{env,fs};
 pub const ECL: [&str; 7] = ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"];
 
 #[derive(Copy, Clone, Debug)]
-pub struct PassportValid {
+struct PassportValid {
     byr: bool,
     iyr: bool,
     eyr: bool,
@@ -121,7 +121,7 @@ impl PassportValid {
     }
 }
 
-    pub fn is_valid(p: &PassportValid) -> bool {
+    fn is_valid(p: &PassportValid) -> bool {
 
         if p.byr == true &&
             p.iyr == true &&
@@ -156,15 +156,7 @@ fn main() {
     }
     let mut counter = 0;
     let mut correct = 0;
-    let mut passport = PassportValid {
-        byr: false,
-        iyr: false,
-        eyr: false,
-        hgt: false,
-        hcl: false,
-        ecl: false,
-        pid: false
-    };
+    let mut passport = PassportValid::default();
 
     for i in 0..lines2.len() {
         for j in &FIELDS {
@@ -173,25 +165,9 @@ fn main() {
                     if counter == FIELDS.len() {
                         if is_valid(&passport) == true {
                             correct += 1;
-                            passport = PassportValid {
-                                byr: false,
-                                iyr: false,
-                                eyr: false,
-                                hgt: false,
-                                hcl: false,
-                                ecl: false,
-                                pid: false
-                            };
+                            passport = PassportValid::default();
                         } else { 
-                            passport = PassportValid {
-                                byr: false,
-                                iyr: false,
-                                eyr: false,
-                                hgt: false,
-                                hcl: false,
-                                ecl: false,
-                                pid: false
-                            };
+                            passport = PassportValid::default();
                         }
                     }
                     counter = 0;
